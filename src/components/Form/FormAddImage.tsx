@@ -11,6 +11,7 @@ interface FormAddImageProps {
   closeModal: () => void;
 }
 
+
 export function FormAddImage({ closeModal }: FormAddImageProps): JSX.Element {
   const [imageUrl, setImageUrl] = useState('');
   const [localImageUrl, setLocalImageUrl] = useState('');

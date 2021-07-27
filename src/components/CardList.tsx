@@ -11,22 +11,39 @@ interface Card {
   id: string;
 }
 
+
 interface CardsProps {
   cards: Card[];
 }
 
 export function CardList({ cards }: CardsProps): JSX.Element {
   // TODO MODAL USEDISCLOSURE
+  const { isOpen, onOpen, onClose } = useDisclosure()
 
   // TODO SELECTED IMAGE URL STATE
+  const [selectedImage,setSelectedImage] = useState<string>("")
 
   // TODO FUNCTION HANDLE VIEW IMAGE
+  const handleViewImage = (url: string) => {
+    setSelectedImage(url)
+
+    onOpen()
+
+    // ModalViewImage({isOpen, onClose, imgUrl: selectedImage})
+
+  }
 
   return (
-    <>
-      {/* TODO CARD GRID */}
+    <SimpleGrid columns={3} spacing="40px">
+      {
+        /* TODO CARD GRID */
+        cards.map((card => <Card data={card} viewImage={() => handleViewImage(card.url)} /> ))
+      }
 
-      {/* TODO MODALVIEWIMAGE */}
-    </>
+      {
+        /* TODO MODALVIEWIMAGE */ 
+        <ModalViewImage isOpen={isOpen} onClose={onClose} imgUrl={selectedImage}/>
+      }
+    </SimpleGrid>
   );
 }
