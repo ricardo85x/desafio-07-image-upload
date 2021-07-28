@@ -12,11 +12,13 @@ import { Error } from '../components/Error';
 export default function Home(): JSX.Element {
 
   const fetchImages = ( { pageParam = null} ) => {
-    return api.get("images", {
+
+    const result = api.get("images", {
       params: {
         after: pageParam
       }
     })
+    return result
   }
 
   const {
@@ -31,31 +33,26 @@ export default function Home(): JSX.Element {
     fetchImages,
     {
       getNextPageParam: (lastPage: any = null) => lastPage.nextCursor,
-      getPreviousPageParam: (lastPage: any, pages) => lastPage.prevCursor,
     }
-    
-    
   );
 
 
-  
-
   const formattedData = useMemo(() => {
     // TODO FORMAT AND FLAT DATA ARRAY
-    return data?.pages.map(p => p.data).flat()
+    return data?.pages.map(p => p.data.data).flat()
 
   }, [data]);
-
 
   // TODO RENDER LOADING SCREEN
   if(isLoading){
     return <Loading />
   }
 
+
   // TODO RENDER ERROR SCREEN
   if(isError){
     return <Error />
-  }
+  } 
 
   return (
     <>
@@ -70,7 +67,7 @@ export default function Home(): JSX.Element {
           hasNextPage && 
             <Button 
               onClick={() =>  isFetchingNextPage ? 
-                console.log("loading") : 
+                console.log("isFetchingNextPage") : 
                 fetchNextPage()
               }
             >
