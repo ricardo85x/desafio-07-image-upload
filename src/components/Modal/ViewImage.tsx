@@ -24,20 +24,20 @@ export function ModalViewImage({
 
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
-        <ModalOverlay />
-        <ModalContent>
+      <ModalOverlay />
+      <ModalContent>
 
-          <ModalBody>
-            <Image src={imgUrl} width="100%" height="100%" maxH="600px" maxW="900px" />
-            <Link href={imgUrl} target="_blank">
-              Abrir Original
-            </Link>
-          </ModalBody>
+        <ModalBody backgroundColor="pGray.800" align="center">
+          <Image src={imgUrl} width="100%" height="100%" maxH="600px" maxW="900px" />
 
-          <ModalFooter>
-           
-          </ModalFooter>
-        </ModalContent>
-      </Modal>
+        </ModalBody>
+
+        <ModalFooter backgroundColor="pGray.800" justify="flex-start">
+          <Link href={imgUrl} target="_blank">
+            Abrir original
+          </Link>
+        </ModalFooter>
+      </ModalContent>
+    </Modal>
   )
 }

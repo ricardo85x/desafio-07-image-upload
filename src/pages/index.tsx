@@ -32,7 +32,11 @@ export default function Home(): JSX.Element {
     'images',
     fetchImages,
     {
-      getNextPageParam: (lastPage: any = null) => lastPage.nextCursor,
+      getNextPageParam: (lastPage: any) => {
+        return !!lastPage?.data?.after ? 
+          lastPage.data.after : 
+          undefined;
+      },
     }
   );
 
@@ -53,6 +57,8 @@ export default function Home(): JSX.Element {
   if(isError){
     return <Error />
   } 
+
+
 
   return (
     <>
