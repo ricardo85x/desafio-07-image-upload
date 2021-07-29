@@ -7,3 +7,8 @@ Essa será uma aplicação onde o seu principal objetivo é adicionar alguns 
 - Infinite Queries e Mutations com React Query;
 - Envio de formulário com React Hook Form;
 - Exibição de Modal e Toast com Chakra UI;
+
+
+### Resultado do desafio:
+
+https://desafio-07-image-upload.vercel.app/
