@@ -71,7 +71,7 @@ export default function Home(): JSX.Element {
           /* TODO RENDER LOAD MORE BUTTON IF DATA HAS NEXT PAGE */
 
           hasNextPage && 
-            <Button 
+            <Button mt={4}
               onClick={() =>  isFetchingNextPage ? 
                 console.log("isFetchingNextPage") : 
                 fetchNextPage()
